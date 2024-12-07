@@ -1,0 +1,122 @@
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --accent-color: #3b82f6;
+  --input-bg: #fff;
+  --input-border: #ddd;
+  --button-bg: #3b82f6;
+  --button-hover-bg: #1e40af;
+  --button-text-color: #fff;
+  --error-color: #e11d48;
+  --input-padding: 0.8rem;
+  --border-radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 2rem;
+}
+
+.App {
+  background: var(--input-bg);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid var(--input-border);
+}
+
+h1 {
+  font-size: 2.4rem;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--input-border);
+}
+
+.course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.course-input {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.subject-input {
+  flex: 2;
+  padding: var(--input-padding);
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius);
+  background-color: var(--input-bg);
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+select {
+  flex: 1;
+  padding: var(--input-padding);
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius);
+  background-color: var(--input-bg);
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+button {
+  padding: var(--input-padding);
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-btn,
+.calculate-btn {
+  margin-top: 30px;
+  
+  background-color: var(--button-bg);
+  color: var(--button-text-color);
+}
+.add-btn{
+  margin-right: 20px;
+}
+
+.add-btn:hover,
+.calculate-btn:hover {
+  background-color: var(--button-hover-bg);
+  transform: translateY(-2px);
+}
+
+.remove-btn {
+  background-color: var(--error-color);
+  color: var(--button-text-color);
+}
+
+.remove-btn:hover {
+  background-color: #be123c;
+}
+
+h2 {
+  margin-top: 2rem;
+  font-size: 1.8rem;
+  color: var(--accent-color);
+}
