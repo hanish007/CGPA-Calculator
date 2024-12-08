@@ -88,13 +88,14 @@ function App() {
           </div>
         ))}
       </div>
-      <button className="add-btn" onClick={addCourse}>
-        ➕ Add Course
-      </button>
-      <button className="calculate-btn" onClick={calculateCGPA}>
-        🧮 Calculate CGPA
-      </button>
-
+      <div className="action-buttons">
+        <button className="add-btn" onClick={addCourse}>
+          ➕ Add Course
+        </button>
+        <button className="calculate-btn" onClick={calculateCGPA}>
+          🧮 Calculate CGPA
+        </button>
+      </div>
       {cgpa !== null && <h2>Your CGPA: {cgpa}</h2>}
     </div>
   );
