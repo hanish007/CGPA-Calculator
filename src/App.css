@@ -8,15 +8,10 @@
   --button-hover-bg: #1e40af;
   --button-text-color: #fff;
   --error-color: #e11d48;
-  --input-padding: 0.8rem;
-  --border-radius: 6px;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
+  --input-padding: 0.7rem; /* Slightly smaller padding */
+  --border-radius: 20px;
+  --font-size: 0.95rem; /* Slightly smaller font size */
+  line-height: 0.2;
 }
 
 body {
@@ -26,92 +21,67 @@ body {
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 1.5rem; /* Reduced padding */
 }
 
 .App {
   background: var(--input-bg);
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  max-width: 700px;
+  padding: 1rem; /* Reduced padding */
+  border-radius: 10px; /* Slightly smaller border radius */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
   width: 100%;
   text-align: center;
   border: 1px solid var(--input-border);
 }
 
-h1 {
-  font-size: 2.4rem;
-  color: var(--text-color);
-  margin-bottom: 2rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--input-border);
+.semester-selector {
+  margin-bottom: 1rem; /* Reduced bottom margin */
 }
 
-.course-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.semester-selector select {
+  padding: var(--input-padding);
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius);
+  background-color: var(--input-bg);
+  font-size: var(--font-size); /* Smaller font size */
+  color: var(--text-color);
+}
+
+.semester-section {
+  margin-top: 1rem;
+  padding: 0.5rem; /* Reduced padding */
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .course-input {
   display: flex;
-  gap: 1rem;
-  align-items: center;
+  gap: 0.9rem; /* Reduced gap between elements */
+  margin-bottom: 0.9rem; /* Reduced margin between rows */
 }
 
-.subject-input {
-  flex: 2;
-  padding: var(--input-padding);
-  border: 1px solid var(--input-border);
-  border-radius: var(--border-radius);
-  background-color: var(--input-bg);
-  font-size: 1rem;
-  color: var(--text-color);
-}
-
+.subject-input,
 select {
-  flex: 1;
   padding: var(--input-padding);
   border: 1px solid var(--input-border);
   border-radius: var(--border-radius);
   background-color: var(--input-bg);
-  font-size: 1rem;
+  font-size: var(--font-size); /* Smaller font size */
   color: var(--text-color);
 }
 
 button {
   padding: var(--input-padding);
-  font-size: 1rem;
-  border: none;
   border-radius: var(--border-radius);
+  font-size: var(--font-size); /* Smaller font size */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.add-btn,
-.calculate-btn {
-  margin-top: 30px;
-  background-color: var(--button-bg);
-  color: var(--button-text-color);
 }
 
 .add-btn {
-  margin-right: 20px;
-}
-
-.add-btn:hover,
-.calculate-btn:hover {
-  background-color: var(--button-hover-bg);
-  transform: translateY(-2px);
-}
-
-.action-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 20px;
+  background-color: var(--button-bg);
+  color: var(--button-text-color);
 }
 
 .remove-btn {
@@ -119,12 +89,27 @@ button {
   color: var(--button-text-color);
 }
 
-.remove-btn:hover {
-  background-color: #be123c;
+.calculate-btn {
+  background-color: var(--button-bg);
+  color: var(--button-text-color);
+  margin-top: 10px;
+}
+
+.gpa-btn {
+  background-color: #fbbf24; /* New color for GPA button */
+  color: #fff;
+  margin-left: 0.5rem; /* Added small space between buttons */
 }
 
 h2 {
-  margin-top: 2rem;
-  font-size: 1.8rem;
   color: var(--accent-color);
+  font-size: 1rem; /* Reduced size of overall CGPA */
+}
+
+h3 {
+  font-size: 1rem; /* Adjusted GPA for semester size */
+}
+h1 {
+  font-size: 1.5em;
+  line-height: 0.2;
 }
