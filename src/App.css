@@ -8,7 +8,7 @@
   --button-hover-bg: #1e40af;
   --button-text-color: #fff;
   --error-color: #e11d48;
-  --input-padding: 0.6rem; /* Slightly smaller padding */
+  --input-padding: 0.5rem; /* Slightly smaller padding */
   --border-radius: 20px;
   --font-size: 0.95rem; /* Slightly smaller font size */
 }
@@ -89,7 +89,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .subject-input,
@@ -124,7 +124,7 @@ button {
 .calculate-btn {
   background-color: var(--button-bg);
   color: var(--button-text-color);
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .gpa-btn {
