@@ -11,7 +11,6 @@
   --input-padding: 0.6rem; /* Slightly smaller padding */
   --border-radius: 20px;
   --font-size: 0.95rem; /* Slightly smaller font size */
-  line-height: 0.2;
 }
 
 body {
@@ -21,13 +20,13 @@ body {
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
-  padding: 1.5rem; /* Reduced padding */
+  padding: 1.5rem;
 }
 
 .App {
   background: var(--input-bg);
-  padding: 1rem; /* Reduced padding */
-  border-radius: 10px; /* Slightly smaller border radius */
+  padding: 1rem;
+  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   max-width: 800px;
   width: 100%;
@@ -35,31 +34,62 @@ body {
   border: 1px solid var(--input-border);
 }
 
-.semester-selector {
-  margin-bottom: 1rem; /* Reduced bottom margin */
+.layout {
+  display: flex;
+  gap: 1.5rem;
 }
 
-.semester-selector select {
+.semester-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 1rem; /* Add margin to push the buttons lower */
+}
+
+
+.semester-btn {
+  background-color: var(--button-bg);
+  color: var(--button-text-color);
+  border: none;
   padding: var(--input-padding);
-  border: 1px solid var(--input-border);
   border-radius: var(--border-radius);
-  background-color: var(--input-bg);
-  font-size: var(--font-size); /* Smaller font size */
-  color: var(--text-color);
+  font-size: var(--font-size);
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.semester-btn.active {
+  background-color: var(--button-hover-bg);
+}
+
+.add-semester-btn {
+  background-color: var(--accent-color);
+  color: var(--button-text-color);
+  padding: var(--input-padding);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size);
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
 }
 
 .semester-section {
+  flex-grow: 1;
   margin-top: 1rem;
-  padding: 0.5rem; /* Reduced padding */
+  padding: 1rem;
   border: 1px solid var(--input-border);
   border-radius: var(--border-radius);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--input-bg);
 }
 
 .course-input {
   display: flex;
-  gap: 0.9rem; /* Reduced gap between elements */
-  margin-bottom: 0.9rem; /* Reduced margin between rows */
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .subject-input,
@@ -68,14 +98,16 @@ select {
   border: 1px solid var(--input-border);
   border-radius: var(--border-radius);
   background-color: var(--input-bg);
-  font-size: var(--font-size); /* Smaller font size */
+  font-size: var(--font-size);
   color: var(--text-color);
+  flex: 1;
+  min-width: 150px;
 }
 
 button {
   padding: var(--input-padding);
   border-radius: var(--border-radius);
-  font-size: var(--font-size); /* Smaller font size */
+  font-size: var(--font-size);
   cursor: pointer;
 }
 
@@ -96,20 +128,21 @@ button {
 }
 
 .gpa-btn {
-  background-color: #fbbf24; /* New color for GPA button */
+  background-color: #fbbf24;
   color: #fff;
-  margin-left: 0.5rem; /* Added small space between buttons */
+  margin-left: 0.5rem;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin-bottom: 1rem;
 }
 
 h2 {
   color: var(--accent-color);
-  font-size: 1rem; /* Reduced size of overall CGPA */
+  font-size: 1rem;
 }
 
 h3 {
-  font-size: 1rem; /* Adjusted GPA for semester size */
-}
-h1 {
-  font-size: 1.5em;
-  line-height: 0.2;
+  font-size: 1rem;
 }

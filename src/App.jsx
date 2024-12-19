@@ -4,13 +4,6 @@ import "./App.css";
 function App() {
   const [semesters, setSemesters] = useState({
     1: [{ subject: "", credits: "", grade: "" }],
-    2: [{ subject: "", credits: "", grade: "" }],
-    3: [{ subject: "", credits: "", grade: "" }],
-    4: [{ subject: "", credits: "", grade: "" }],
-    5: [{ subject: "", credits: "", grade: "" }],
-    6: [{ subject: "", credits: "", grade: "" }],
-    7: [{ subject: "", credits: "", grade: "" }],
-    8: [{ subject: "", credits: "", grade: "" }],
   });
 
   const [selectedSemester, setSelectedSemester] = useState(1);
@@ -27,7 +20,6 @@ function App() {
   };
 
   const creditOptions = [1, 2, 3, 4, 5, 6];
-  const semesterOptions = [1, 2, 3, 4, 5, 6, 7, 8];
 
   const handleChange = (index, field, value) => {
     const updatedSemesters = { ...semesters };
@@ -76,8 +68,7 @@ function App() {
     let totalGPA = 0;
     let count = 0;
 
-    // Loop through all semesters and calculate the average GPA
-    for (let semester = 1; semester <= 8; semester++) {
+    for (let semester = 1; semester <= Object.keys(semesters).length; semester++) {
       if (semesterGPA[semester]) {
         totalGPA += parseFloat(semesterGPA[semester]);
         count++;
@@ -88,79 +79,92 @@ function App() {
     setCgpa(cgpa);
   };
 
+  const addSemester = () => {
+    const newSemester = Object.keys(semesters).length + 1;
+    setSemesters({
+      ...semesters,
+      [newSemester]: [{ subject: "", credits: "", grade: "" }],
+    });
+    setSelectedSemester(newSemester);
+  };
+
   return (
     <div className="App">
       <h1>CGPA Calculator</h1>
-      <div className="semester-selector">
-        <label htmlFor="semester-dropdown">Select Semester: </label>
-        <select
-          id="semester-dropdown"
-          value={selectedSemester}
-          onChange={(e) => setSelectedSemester(Number(e.target.value))}
-        >
-          {semesterOptions.map((semester) => (
-            <option key={semester} value={semester}>
-              Semester {semester}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="semester-section">
-        <h2>Semester {selectedSemester}</h2>
-        {semesters[selectedSemester]?.map((course, index) => (
-          <div key={index} className="course-input">
-            <input
-              type="text"
-              placeholder="Subject"
-              value={course.subject}
-              onChange={(e) =>
-                handleChange(index, "subject", e.target.value)
-              }
-              className="subject-input"
-            />
-            <select
-              value={course.credits}
-              onChange={(e) =>
-                handleChange(index, "credits", e.target.value)
-              }
-            >
-              <option value="">Select Credits</option>
-              {creditOptions.map((credit) => (
-                <option key={credit} value={credit}>
-                  {credit}
-                </option>
-              ))}
-            </select>
-            <select
-              value={course.grade}
-              onChange={(e) =>
-                handleChange(index, "grade", e.target.value)
-              }
-            >
-              <option value="">Select Grade</option>
-              {Object.keys(gradeToPoints).map((grade) => (
-                <option key={grade} value={grade}>
-                  {grade}
-                </option>
-              ))}
-            </select>
+      <div className="layout">
+        <div className="semester-list">
+          {Object.keys(semesters).map((semester) => (
             <button
-              className="remove-btn"
-              onClick={() => removeCourse(index)}
+              key={semester}
+              className={`semester-btn ${
+                Number(semester) === selectedSemester ? "active" : ""
+              }`}
+              onClick={() => setSelectedSemester(Number(semester))}
             >
-              ✖
+              Semester {semester}
             </button>
-          </div>
-        ))}
-        <button className="add-btn" onClick={addCourse}>
-          ➕ Add Course
-        </button>
-        <button className="gpa-btn" onClick={calculateGPA}>
-          📊 Calculate GPA
-        </button>
-        {semesterGPA[selectedSemester] && (
-          <h3>GPA for Semester {selectedSemester}: {semesterGPA[selectedSemester]}</h3>
-        )}
+          ))}
+          <button className="add-semester-btn" onClick={addSemester}>
+            ➕ Add Semester
+          </button>
+        </div>
+        <div className="semester-section">
+          <h2>Semester {selectedSemester}</h2>
+          {semesters[selectedSemester]?.map((course, index) => (
+            <div key={index} className="course-input">
+              <input
+                type="text"
+                placeholder="Subject"
+                value={course.subject}
+                onChange={(e) =>
+                  handleChange(index, "subject", e.target.value)
+                }
+                className="subject-input"
+              />
+              <select
+                value={course.credits}
+                onChange={(e) =>
+                  handleChange(index, "credits", e.target.value)
+                }
+              >
+                <option value="">Select Credits</option>
+                {creditOptions.map((credit) => (
+                  <option key={credit} value={credit}>
+                    {credit}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={course.grade}
+                onChange={(e) =>
+                  handleChange(index, "grade", e.target.value)
+                }
+              >
+                <option value="">Select Grade</option>
+                {Object.keys(gradeToPoints).map((grade) => (
+                  <option key={grade} value={grade}>
+                    {grade}
+                  </option>
+                ))}
+              </select>
+              <button
+                className="remove-btn"
+                onClick={() => removeCourse(index)}
+              >
+                ✖
+              </button>
+            </div>
+          ))}
+          <button className="add-btn" onClick={addCourse}>
+            ➕ Add Course
+          </button>
+          <button className="gpa-btn" onClick={calculateGPA}>
+            📊 Calculate GPA
+          </button>
+          {semesterGPA[selectedSemester] && (
+            <h3>GPA for Semester {selectedSemester}: {semesterGPA[selectedSemester]}</h3>
+          )}
+        </div>
       </div>
       <div className="action-buttons">
         <button className="calculate-btn" onClick={calculateCGPA}>
