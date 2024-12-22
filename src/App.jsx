@@ -111,7 +111,6 @@ function App() {
       const updatedSemesters = { ...semesters };
       delete updatedSemesters[semesterToDelete];
 
-      // Adjust semester numbers
       const reorderedSemesters = Object.keys(updatedSemesters)
         .sort((a, b) => a - b)
         .reduce((acc, key, index) => {
@@ -121,7 +120,6 @@ function App() {
 
       setSemesters(reorderedSemesters);
 
-      // Adjust selected semester
       const newSelectedSemester =
         semesterToDelete > 1 ? semesterToDelete - 1 : 1;
       setSelectedSemester(newSelectedSemester);
@@ -147,18 +145,27 @@ function App() {
     }));
   };
 
+  // Handle smooth scroll to section
+  const handleScrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="App">
       {/* Navbar */}
       <nav className="navbar">
         <ul>
-          <li><a href="#cgpa-calculator">CGPA Calculator</a></li>
-          <li><a href="#weighted-cgpa-calculator">Weighted CGPA Calculator</a></li>
-          <li><a href="#about-us">About Us</a></li>
+          <li><a href="#cgpa-calculator" onClick={() => handleScrollToSection("cgpa-calculator")}>CGPA Calculator</a></li>
+          <li><a href="#weighted-cgpa-calculator" onClick={() => handleScrollToSection("weighted-cgpa-calculator")}>Weighted CGPA Calculator</a></li>
+          <li><a href="#about-us" onClick={() => handleScrollToSection("about-us")}>About Us</a></li>
         </ul>
       </nav>
-
-      <h1>CGPA & Weighted CGPA Calculator</h1>
 
       {/* CGPA Calculator Section */}
       <div className="cgpa-section" id="cgpa-calculator">
@@ -249,7 +256,7 @@ function App() {
       </div>
 
       {/* Weighted CGPA Section */}
-      <div className="weighted-section" id="weighted-cgpa-calculator">
+      <div className="weighted-container" id="weighted-cgpa-calculator"> 
         <h2>Weighted CGPA Calculator</h2>
         <div className="weighted-input">
           <label>Total Weighted Grade Points:</label>
@@ -280,7 +287,7 @@ function App() {
       </div>
 
       {/* About Us Section */}
-      <div className="about-us" id="about-us">
+      <div className="about-us-container" id="about-us">
         <h2>About Us</h2>
         <p>We are dedicated to helping students track their academic performance with ease.</p>
       </div>

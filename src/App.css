@@ -3,7 +3,7 @@
 }
 
 :root {
-  --bg-color: #f5f5f5;
+  --bg-color: #f0f0f0;
   --text-color: #333;
   --accent-color: #3b82f6;
   --input-bg: #fff;
@@ -29,7 +29,7 @@ body {
 
 .App {
   background: var(--input-bg);
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   max-width: 800px;
@@ -185,18 +185,13 @@ h3 {
 }
 
 /* Applying the same theme to the weighted CGPA section */
-.weighted-layout {
+.weighted-container {
   margin-top: 2rem; /* Space between the main content and the weighted CGPA section */
   padding: 1rem;
   border: 1px solid var(--input-border);
   border-radius: var(--border-radius);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background-color: var(--input-bg);
-}
-
-h2 {
-  color: var(--accent-color);
-  font-size: 1rem;
 }
 
 .weighted-input {
@@ -251,7 +246,7 @@ h3 {
   border-radius: var(--border-radius);
   background-color: var(--input-bg);
   font-size: var(--font-size);
-  color: var(--text-color);
+  color : var(--text-color);
   width: 100%;
   box-sizing: border-box;
   appearance: none; /* Removes default dropdown arrow */
@@ -311,19 +306,27 @@ h3 {
 }
 
 /* Weighted CGPA Section */
-.weighted-section {
-  background-color: var(--input-bg);
+.weighted-container {
+  margin-top: 2rem; /* Space between the main content and the weighted CGPA section */
   padding: 1rem;
   border-radius: var(--border-radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin-top: 2rem;
+  background-color: var(--input-bg);
+}
+
+/* About Us Section */
+.about-us-container {
+  margin-top: 2rem; /* Space between the main content and this section */
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: var(--input-bg);
 }
 
 /* Navigation Bar */
 .navbar {
   background-color: var(--accent-color);
-  padding: 1rem;
+  padding: 1rem 2rem;
   text-align: center;
   position: fixed;
   width: 100%;
@@ -331,6 +334,7 @@ h3 {
   left: 0;
   z-index: 1000;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, #3498db, #2ecc71); /* Example gradient */
 }
 
 .navbar ul {
@@ -357,19 +361,15 @@ h3 {
 .App {
   margin-top: 70px; /* Adjust this value based on navbar height */
 }
-
-.weighted-container {
-  margin-top: 2rem; /* Space between the previous content and this section */
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: var(--input-bg);
-}
-
+.cgpa-section,
+.weighted-container,
 .about-us-container {
-  margin-top: 2rem; /* Space between the previous content and this section */
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: var(--input-bg);
+  transition: box-shadow 0.2s, transform 0.4s;
 }
+.cgpa-section:hover,
+.weighted-container:hover,
+.about-us-container:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  /* transform: translateY(-2px); */
+}
+
